@@ -8,6 +8,7 @@ import (
 	"bringkad-arena-service-go/config"
 	"bringkad-arena-service-go/databases"
 	v1 "bringkad-arena-service-go/routes/v1"
+	"bringkad-arena-service-go/validators"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,10 +23,16 @@ func main() {
 	// Connect to DB
 	databases.ConnectDB()
 
+	// Register custom validator for request validation
+	validators.RegisterRequestCustomValidator()
+
 	// Health check API
-	router.GET("/", func(c *gin.Context) {
+	router.GET("/api/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "All system running successfully"})
 	})
+
+	// Swagger API
+	// router.GET("/api/swagger")
 
 	// Register API routes
 	apiGroup := router.Group("/api")

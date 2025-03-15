@@ -26,6 +26,11 @@ func ConnectDB() {
 		log.Fatal("Error connecting to DB:", err)
 	}
 
+	// err = db.AutoMigrate(&models.User{}, &models.Admin{})
+	// if err != nil {
+	// 	log.Fatal("Failed to migrate database:", err)
+	// }
+
 	DB = db
 
 }

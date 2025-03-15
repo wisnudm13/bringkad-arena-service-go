@@ -1,4 +1,4 @@
-package v1
+package users
 
 import (
 	"github.com/gin-gonic/gin"
@@ -6,6 +6,7 @@ import (
 
 func RegisterUserRoutes(r *gin.RouterGroup) {
 	users := r.Group("/users")
+
 	users.POST("/", CreateUser)
 	users.GET("/", GetUserList)
 	users.GET("/:id", GetUserDetail)
@@ -14,7 +15,6 @@ func RegisterUserRoutes(r *gin.RouterGroup) {
 }
 
 func CreateUser(context *gin.Context) {
-
 }
 
 func DeleteUser(context *gin.Context) {
